@@ -1,16 +1,45 @@
-# React + Vite
+Markdown
+# 🎮 GameScout: Tu Próxima Aventura Empieza Aquí
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> *"Un refugio digital construido con mucha dedicación para quienes buscan su próxima gran aventura sin barreras. GameScout nació como un desafío técnico de React, pero cobró vida impulsado por el amor a los videojuegos y la convicción de que el buen entretenimiento (y el buen código) debe ser accesible para todos."*
 
-Currently, two official plugins are available:
+## 📺 Demostración del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Como parte de la entrega de este proyecto, he preparado un breve video donde muestro la aplicación en funcionamiento y explico cómo resolví los requerimientos técnicos (Hooks, consumo de API, filtrado y ordenamiento).
 
-## React Compiler
+👉 **[Haz clic aquí para ver el video explicativo en YouTube/Loom]** *(Nota: ¡Reemplazar este texto con el link real antes de entregar!)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Características de la Aplicación
 
-## Expanding the ESLint configuration
+- **Exploración sin límites:** Consumo de la API pública de *Free-To-Play Games* para renderizar un catálogo dinámico y actualizado de juegos gratuitos.
+- **Búsqueda inteligente:** Filtrado en tiempo real para encontrar exactamente lo que buscas (por género, plataforma, etc.).
+- **Orden a tu medida:** Capacidad de ordenar los resultados alfabéticamente o por otros criterios relevantes.
+- **Diseño Responsivo:** Interfaz construida con Bootstrap, pensada para verse increíble tanto en monitores grandes como en dispositivos móviles.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías Utilizadas
+
+- **Frontend:** React.js (con Vite)
+- **Estilos:** CSS puro y Bootstrap 5 (clases nativas)
+- **Lógica y Estado:** React Hooks (`useState`, `useEffect`)
+- **Peticiones HTTP:** `fetch` nativo de JavaScript
+
+## 🚀 Cómo ejecutar este proyecto localmente
+
+Si quieres probar GameScout en tu propia máquina, sigue estos pasos:
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/iacastillo90/Generation-GameScout.git
+Entra a la carpeta del proyecto:
+
+Bash
+cd Generation-GameScout
+Instala las dependencias:
+
+Bash
+npm install
+Levanta el servidor de desarrollo:
+
+Bash
+npm run dev
+Desarrollado línea a línea con 💻 y ☕ por Ivan.
