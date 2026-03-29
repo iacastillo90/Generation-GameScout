@@ -14,7 +14,6 @@ const Cards = ({ game }) => {
                         <Card.Img variant="top" src={game.thumbnail} alt={game.title} />
                         <Card.Body className="d-flex flex-column">
                             
-                            {/* 1. Aplicamos la clase title-uniform aquí */}
                             <Card.Title className="text-white fw-bold title-uniform">
                                 {game.title}
                             </Card.Title>
@@ -24,7 +23,6 @@ const Cards = ({ game }) => {
                                 <span className="badge text-bg-secondary ms-2">{game.platform}</span>
                             </div>
                             
-                            {/* 2. Aplicamos desc-uniform aquí */}
                             <p className="card-text small">
                                 {game.short_description}
                             </p>
