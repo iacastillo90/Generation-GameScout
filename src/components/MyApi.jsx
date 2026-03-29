@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Card from './Card';
+import Cards from './Cards';
 import axios from 'axios';
 
 function MyApi() {
@@ -15,6 +15,8 @@ function MyApi() {
                 const response = await axios.get(apiUrl);
 
                 setData(response.data); 
+
+                console.log("Datos obtenidos de la API:", response.data);
 
             } catch (error) {
                 console.error("Error consumiendo la API:", error);
@@ -32,7 +34,7 @@ function MyApi() {
             <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                 {data.map(game => (
                     <div className="col" key={game.id}>
-                        <Card game={game} />
+                        <Cards game={game} />
                     </div>
                 ))}
             </div>

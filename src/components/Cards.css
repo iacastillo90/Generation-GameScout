@@ -1,0 +1,54 @@
+/* Card principal */
+.flip-card-container {
+    background-color: transparent;
+    perspective: 1000px; 
+    height: 100%;
+    min-height: 380px; 
+}
+
+/* El elemento interno que realmente gira */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Efecto: cuando el mouse pasa por encima, gira 180 grados */
+.flip-card-container:hover .flip-card-inner {
+    transform: rotateY(180deg);
+
+}
+
+/* Card frontal y trasera */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+}
+
+/* Card cara trasera */
+.flip-card-back {
+    transform: rotateY(180deg);
+    background-color: #212529; 
+    padding: 1.5rem;
+    border: 1px solid #495057; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+/* Uniformidad en titulos */
+.title-uniform {
+    min-height: 3rem; 
+}
+
+/* Texto de descripcion */
+.card-text {
+    color: #f8f8f8;
+}
