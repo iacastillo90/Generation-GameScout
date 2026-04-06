@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 import Buscador from './components/Buscador'
@@ -7,17 +8,19 @@ import Hero from './components/Hero'
 import MyApi from './components/MyApi'
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <>
-    <Header />
-    <Hero />
-    <Buscador />
-    <h1> GameScout </h1>
-    <MyApi />
-    <Footer />
+      <div className="app-container">
+        <Header />
+        <Hero />
+        <Buscador searchTerm={searchTerm} onSearch={setSearchTerm} />
+        <h1 className="page-title"> GameScout </h1>
+        <MyApi searchTerm={searchTerm} />
+      </div>
+      <Footer />
     </>
-    
   )
 };
 

@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 const Cards = ({ game }) => { 
     return (
-        <article className="flip-card-container">
+        <article id="cards" className="flip-card-container">
             <div className="flip-card-inner">
                 
                 {/* --- CARA FRONTAL --- */}

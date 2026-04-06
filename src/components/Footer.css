@@ -1,10 +1,16 @@
 /* Footer */
+footer.bg-dark {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    width: 100%;
+}
+
 footer a {
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #0dcaf0 !important; 
+    color: var(--accent, #38bdf8) !important; 
 }
 
 footer .bi {
@@ -14,9 +20,9 @@ footer .bi {
 
 footer .bi:hover {
     transform: translateY(-5px); 
-    color: #0dcaf0;
+    color: var(--accent, #38bdf8);
 }
 
 .footer-bottom {
-    color: #fdfdfd !important; 
+    color: var(--text-muted, #94a3b8) !important; 
 }

@@ -3,18 +3,29 @@ import { useEffect, useState } from 'react';
 import Cards from './Cards';
 import axios from 'axios';
 
-function MyApi() {
+function MyApi({ searchTerm }) {
     const [data, setData] = useState([]);
     
     const [paginaActual, setPaginaActual] = useState(1);
     const juegosPorPagina = 16;
 
+    // Filter data based on search term
+    const filteredData = data.filter(game => 
+        game.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     // Math.ceil asegura que si sobran 3 juegos al final, tengan su propia página
-    const totalPaginas = Math.ceil(data.length / juegosPorPagina);
+    const totalPaginas = Math.ceil(filteredData.length / juegosPorPagina);
 
     const indiceUltimoJuego = paginaActual * juegosPorPagina;
     const indicePrimerJuego = indiceUltimoJuego - juegosPorPagina;
-    const juegosActuales = data.slice(indicePrimerJuego, indiceUltimoJuego);
+    const juegosActuales = filteredData.slice(indicePrimerJuego, indiceUltimoJuego);
+
+    const [prevSearch, setPrevSearch] = useState(searchTerm);
+    if (searchTerm !== prevSearch) {
+        setPrevSearch(searchTerm);
+        setPaginaActual(1);
+    }
 
     const cambiarPagina = (nuevaPagina) => {
         setPaginaActual(nuevaPagina);

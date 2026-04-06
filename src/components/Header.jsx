@@ -1,8 +1,16 @@
 function Header() {
     
     return (
-
-        <h1>Header</h1>
+        <div className="header-component">
+            <div className="header-logo">
+                🎮 GameScout
+            </div>
+            <nav className="header-nav">
+                <a href="#app-container">Inicio</a>
+                <a href="#cards">Juegos</a>
+                <a href="#footers">Contacto</a>
+            </nav>
+        </div>
     )
 };
 
