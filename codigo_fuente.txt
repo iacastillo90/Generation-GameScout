@@ -1,0 +1,687 @@
+=================================================
+RUTA: src/App.css
+NIVEL/ARCHIVO: App.css
+=================================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.6);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.08), transparent 25%);
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header Styles */
+.header-component {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: var(--accent);
+}
+
+/* Hero Styles */
+.hero-component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-component:hover {
+  transform: translateY(-5px);
+}
+
+.hero-component h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(to right, #f8fafc, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Carousel Indicators */
+.carousel-indicators-custom {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active, .indicator-dot:hover {
+  background-color: var(--accent);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Buscador Styles */
+.buscador-component {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--accent);
+  border-radius: 3rem;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  margin-bottom: 3rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.buscador-component:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+}
+
+.buscador-component h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.buscador-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  outline: none;
+  text-align: left;
+}
+
+.buscador-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Main Title (GameScout) */
+.page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent-glow);
+}
+
+@media (max-width: 768px) {
+  .hero-component h1 {
+    font-size: 2.5rem;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+}
+
+
+
+=================================================
+RUTA: src/App.jsx
+NIVEL/ARCHIVO: App.jsx
+=================================================
+import { useState } from 'react'
+import './App.css'
+
+import Buscador from './components/Buscador'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import MyApi from './components/MyApi'
+
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  return (
+    <>
+      <div className="app-container">
+        <Header />
+        <Hero />
+        <Buscador searchTerm={searchTerm} onSearch={setSearchTerm} />
+        <h1 className="page-title"> GameScout </h1>
+        <MyApi searchTerm={searchTerm} />
+      </div>
+      <Footer />
+    </>
+  )
+};
+
+export default App;
+
+
+
+=================================================
+RUTA: src/components/Buscador.jsx
+NIVEL/ARCHIVO: Buscador.jsx
+=================================================
+function Buscador ({ searchTerm, onSearch }) {
+
+    return (
+        <div className="buscador-component">
+            <i className="bi bi-search me-3 fs-4 text-info"></i>
+            <input 
+                type="text" 
+                className="buscador-input" 
+                placeholder="Buscar juegos por nombre..." 
+                value={searchTerm}
+                onChange={(e) => onSearch(e.target.value)}
+            />
+        </div>
+    )
+};
+
+export default Buscador;
+
+
+=================================================
+RUTA: src/components/Cards.css
+NIVEL/ARCHIVO: Cards.css
+=================================================
+/* Card principal */
+.flip-card-container {
+    background-color: transparent;
+    perspective: 1000px; 
+    height: 100%;
+    min-height: 460px; 
+}
+
+/* El elemento interno que realmente gira */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Efecto: cuando el mouse pasa por encima, gira 180 grados */
+.flip-card-container:hover .flip-card-inner {
+    transform: rotateY(180deg);
+
+}
+
+/* Card frontal y trasera */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+}
+
+/* Card cara trasera */
+.flip-card-back {
+    transform: rotateY(180deg);
+    background-color: #212529; 
+    padding: 1.5rem;
+    border: 1px solid #495057; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+/* Uniformidad en titulos */
+.title-uniform {
+    min-height: 3rem; 
+}
+
+/* Texto de descripcion */
+.card-text {
+    color: #f8f8f8;
+}
+
+
+=================================================
+RUTA: src/components/Cards.jsx
+NIVEL/ARCHIVO: Cards.jsx
+=================================================
+import './Cards.css';
+
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+
+const Cards = ({ game }) => { 
+    return (
+        <article id="cards" className="flip-card-container">
+            <div className="flip-card-inner">
+                
+                {/* --- CARA FRONTAL --- */}
+                <div className="flip-card-front">
+                    <Card className="h-100 bg-dark text-light border-5">
+                        <Card.Img variant="top" src={game.thumbnail} alt={game.title} />
+                        <Card.Body className="d-flex flex-column">
+                            
+                            <Card.Title className="text-white fw-bold title-uniform">
+                                {game.title}
+                            </Card.Title>
+                            
+                            <div className="mt-2 mb-3">
+                                <span className="badge text-bg-primary">{game.genre}</span>
+                                <span className="badge text-bg-secondary ms-2">{game.platform}</span>
+                            </div>
+                            
+                            <p className="card-text small">
+                                {game.short_description}
+                            </p>
+                            
+                        </Card.Body>
+                    </Card>
+                </div>
+
+                {/* --- CARA TRASERA --- */}
+                <div className="flip-card-back text-light rounded shadow-lg">
+                    <h5 className="text-info fw-bold mb-4">{game.title}</h5>
+                    
+                    <div className="text-start mb-4 small">
+                        <p><strong>🏢 Desarrollador:</strong> <br/> {game.developer}</p>
+                        <p><strong>📅 Lanzamiento:</strong> <br/> {game.release_date}</p>
+                        <p><strong>🌐 Distribuidor:</strong> <br/> {game.publisher}</p>
+                    </div>
+
+                    <Button 
+                        variant="outline-info" 
+                        className="mt-auto"
+                        href={game.game_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        Jugar Ahora
+                    </Button>
+                </div>
+
+            </div>
+        </article>
+    );
+};
+
+export default Cards;
+
+
+=================================================
+RUTA: src/components/Footer.css
+NIVEL/ARCHIVO: Footer.css
+=================================================
+/* Footer */
+footer.bg-dark {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    width: 100%;
+}
+
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent, #38bdf8) !important; 
+}
+
+footer .bi {
+    display: inline-block; 
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .bi:hover {
+    transform: translateY(-5px); 
+    color: var(--accent, #38bdf8);
+}
+
+.footer-bottom {
+    color: var(--text-muted, #94a3b8) !important; 
+}
+
+
+=================================================
+RUTA: src/components/Footer.jsx
+NIVEL/ARCHIVO: Footer.jsx
+=================================================
+import "./Footer.css";
+
+function Footer () {
+    return (
+        <footer id="footers" className="bg-dark text-light py-4 mt-auto border-top border-secondary text-center">
+            <div className="container">
+                
+                <div className="footer-info mb-3">
+                    <p className="mb-1"><i className="bi bi-envelope-fill me-2"></i> iacastillo.ili2@gmail.com</p>
+                    <p className="mb-0"><i className="bi bi-geo-alt-fill me-2"></i> Santiago, Chile</p>
+                </div>
+
+                <div className="footer-social mb-3 fs-4">
+                    <a href="#" aria-label="Síguenos en Instagram" className="text-light me-3"><i className="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="Síguenos en Github" className="text-light me-3"><i className="bi bi-github"></i></a>
+                    <a href="#" aria-label="Síguenos en LinkedIn" className="text-light"><i className="bi bi-linkedin"></i></a>
+                </div>
+
+                <div className="footer-bottom small">
+                    <a href="#" className="text-decoration-none">Política de Privacidad</a>
+                    <p className="mt-2 mb-0">&copy; 2026 GameScout | Desarrollado con 💻 y ☕</p>
+                </div>
+
+            </div>
+        </footer>
+    )
+};
+
+export default Footer;
+
+
+=================================================
+RUTA: src/components/Header.jsx
+NIVEL/ARCHIVO: Header.jsx
+=================================================
+function Header() {
+    
+    return (
+        <div className="header-component">
+            <div className="header-logo">
+                🎮 GameScout
+            </div>
+            <nav className="header-nav">
+                <a href="#app-container">Inicio</a>
+                <a href="#cards">Juegos</a>
+                <a href="#footers">Contacto</a>
+            </nav>
+        </div>
+    )
+};
+
+export default Header;
+
+
+=================================================
+RUTA: src/components/Hero.jsx
+NIVEL/ARCHIVO: Hero.jsx
+=================================================
+import { useState, useEffect } from 'react';
+
+const images = [
+    {
+        url: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2070&auto=format&fit=crop",
+        title: "Descubre Nuevos Universos"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1552820728-8b83bb6b7738?q=80&w=2070&auto=format&fit=crop",
+        title: "La Mejor Colección"
+    },
+    {
+        url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
+        title: "Aventuras Épicas"
+    }
+];
+
+function Hero () {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="hero-component" style={{
+            backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url(${images[currentIndex].url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transition: 'background-image 1s ease-in-out'
+        }}>
+            <h1>{images[currentIndex].title}</h1>
+            <div className="carousel-indicators-custom">
+                {images.map((_, index) => (
+                    <span 
+                        key={index} 
+                        className={`indicator-dot ${index === currentIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentIndex(index)}
+                    ></span>
+                ))}
+            </div>
+        </div>
+    )
+};
+
+export default Hero;
+
+
+=================================================
+RUTA: src/components/MyApi.jsx
+NIVEL/ARCHIVO: MyApi.jsx
+=================================================
+import { useEffect, useState } from 'react';
+
+import Cards from './Cards';
+import axios from 'axios';
+
+function MyApi({ searchTerm }) {
+    const [data, setData] = useState([]);
+    
+    const [paginaActual, setPaginaActual] = useState(1);
+    const juegosPorPagina = 16;
+
+    // Filter data based on search term
+    const filteredData = data.filter(game => 
+        game.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Math.ceil asegura que si sobran 3 juegos al final, tengan su propia página
+    const totalPaginas = Math.ceil(filteredData.length / juegosPorPagina);
+
+    const indiceUltimoJuego = paginaActual * juegosPorPagina;
+    const indicePrimerJuego = indiceUltimoJuego - juegosPorPagina;
+    const juegosActuales = filteredData.slice(indicePrimerJuego, indiceUltimoJuego);
+
+    const [prevSearch, setPrevSearch] = useState(searchTerm);
+    if (searchTerm !== prevSearch) {
+        setPrevSearch(searchTerm);
+        setPaginaActual(1);
+    }
+
+    const cambiarPagina = (nuevaPagina) => {
+        setPaginaActual(nuevaPagina);
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        const getGames = async () => {
+            try {
+                const apiUrl = 'https://corsproxy.io/?https://www.freetogame.com/api/games';
+                const response = await axios.get(apiUrl);
+                setData(response.data); 
+            } catch (error) {
+                console.error("Error consumiendo la API:", error);
+            }
+        };
+        getGames();
+    }, []);
+
+    return (
+        <div className="container mt-4 mb-5">
+            <h2 className="text-center mb-4">Catálogo de Juegos Gratuitos</h2>
+
+            <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+                {juegosActuales.map(game => (
+                    <div className="col" key={game.id}>
+                        <Cards game={game} />
+                    </div>
+                ))}
+            </div>
+
+            {/* Paginación  */}
+            {data.length > 0 && (
+                <div className="d-flex flex-wrap justify-content-center align-items-center gap-3">
+                    
+                    {/* Botón para saltar a la Primera Página */}
+                    <button 
+                        className="btn btn-sm btn-outline-secondary" 
+                        onClick={() => cambiarPagina(1)}
+                        disabled={paginaActual === 1}
+                        title="Ir a la primera página"
+                    >
+                        <i className="bi bi-chevron-double-left"></i>
+                    </button>
+
+                    {/* Botón para saltar a la Página Anterior */}
+                    <button 
+                        className="btn btn-outline-info" 
+                        onClick={() => cambiarPagina(paginaActual - 1)}
+                        disabled={paginaActual === 1}
+                    >
+                        <i className="bi bi-arrow-left me-2"></i>Anterior
+                    </button>
+                    
+                    {/* Selector de paginas */}
+                    <div className="d-flex align-items-center gap-2">
+                        <span className="text-back d-none d-sm-inline">Página</span>
+                        
+                        <select 
+                            className="form-select bg-dark text-info border-info fw-bold text-center"
+                            style={{ width: "auto", cursor: "pointer" }}
+                            value={paginaActual}
+                            onChange={(e) => cambiarPagina(Number(e.target.value))}
+                        >
+                            {[...Array(totalPaginas)].map((_, index) => (
+                                <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                </option>
+                            ))}
+                        </select>
+                        
+                        <span className="text-back">de {totalPaginas}</span>
+                    </div>
+
+                    {/* Botón para saltar a la Siguiente Página */}
+                    <button 
+                        className="btn btn-outline-info" 
+                        onClick={() => cambiarPagina(paginaActual + 1)}
+                        disabled={paginaActual === totalPaginas} 
+                    >
+                        Siguiente<i className="bi bi-arrow-right ms-2"></i>
+                    </button>
+
+                    {/* Botón para saltar a la Última Página */}
+                    <button 
+                        className="btn btn-sm btn-outline-secondary" 
+                        onClick={() => cambiarPagina(totalPaginas)}
+                        disabled={paginaActual === totalPaginas}
+                        title="Ir a la última página"
+                    >
+                        <i className="bi bi-chevron-double-right"></i>
+                    </button>
+
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default MyApi;
+
+
+=================================================
+RUTA: src/index.css
+NIVEL/ARCHIVO: index.css
+=================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+=================================================
+RUTA: src/main.jsx
+NIVEL/ARCHIVO: main.jsx
+=================================================
+import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import App from './App.jsx'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+
